@@ -5,7 +5,11 @@ import AutomobileList from './AutomobileList';
 import ModelForm from './ModelForm';
 import Nav from './Nav';
 
-function App() {
+function App(props) {
+
+  // if (props.autos === undefined) {
+  //   return null;
+  // }
   return (
     <BrowserRouter>
       <Nav />
