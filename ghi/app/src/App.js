@@ -3,7 +3,9 @@ import MainPage from './MainPage';
 import AutomobileForm from './AutomobileForm';
 import AutomobileList from './AutomobileList';
 import ModelForm from './ModelForm';
+import SalespeopleList from './SalespeopleList';
 import Nav from './Nav';
+import SalespersonForm from './SalespersonForm';
 
 function App(props) {
 
@@ -19,6 +21,8 @@ function App(props) {
           <Route path="/models/create" element={<ModelForm />} />
           <Route path="/automobiles" element={<AutomobileList />} />
           <Route path="/automobiles/create" element={<AutomobileForm />} />
+          <Route path="/salespeople" element={<SalespeopleList />} />
+          <Route path="/salespeople/create" element={<SalespersonForm />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -36,7 +36,6 @@ export default function AutomobileForm(props) {
     data.vin = vin;
     data.model_id = model;
 
-    console.log(data)
 
     const automobileUrl = 'http://localhost:8100/api/automobiles/';
     const fetchConfig = {
@@ -50,7 +49,6 @@ export default function AutomobileForm(props) {
     const automobileResponse = await fetch(automobileUrl, fetchConfig)
     if (automobileResponse.ok) {
       const newModel = await automobileResponse.json();
-      console.log(newModel);
 
       setColor('');
       setYear('');

@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 export default function ModelForm() {
-
     const [modelName, setModelName] = useState("");
     const [picture, setPicture] = useState("");
     const [manufacturer, setManufacturer] = useState(false);
@@ -35,8 +34,6 @@ export default function ModelForm() {
         data.picture_url = picture;
         data.manufacturer_id = manufacturer;
 
-        console.log(data)
-
         const modelUrl = 'http://localhost:8100/api/models/';
         const fetchConfig = {
             method: "post",
@@ -49,7 +46,6 @@ export default function ModelForm() {
         const modelResponse = await fetch(modelUrl, fetchConfig)
         if (modelResponse.ok) {
             const newModel = await modelResponse.json();
-            console.log(newModel);
 
             setModelName('');
             setPicture('');

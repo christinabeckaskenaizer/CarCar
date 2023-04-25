@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function AutomobileList(props) {
+export default function AutomobileList() {
 
     const [autos, setAutos] = useState([]);
 
@@ -11,7 +11,6 @@ export default function AutomobileList(props) {
 
     async function handleDeleteAutomobile(automobile) {
         const url = `http://localhost:8100/api/automobiles/${automobile.vin}`
-        console.log(url);
         const response = await fetch(url, { method: 'DELETE' })
         if (response.ok) {
             const data = await response.json();
@@ -27,7 +26,6 @@ export default function AutomobileList(props) {
         if (response.ok) {
             const data = await response.json();
             setAutos(data.autos);
-            console.log(autos)
         }
     }
 
