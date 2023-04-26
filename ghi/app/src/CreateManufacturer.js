@@ -70,7 +70,7 @@ function CreateManufacturer(props) {
                 {/* onChange updates the component state */}
                 {/* add || to name for it to be a "controlled input or else an error will occur in console" */}
                 <input value={name || ''} onChange={handleNameChange} placeholder="Name" required type="text" name="name" id="name" className="form-control"/>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Manufacturer Name...</label>
               </div>
               <button className="btn btn-primary">Create</button>
             </form>
