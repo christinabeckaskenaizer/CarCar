@@ -5,6 +5,7 @@ import AutomobileList from './AutomobileList';
 import ModelForm from './ModelForm';
 import SalespeopleList from './SalespeopleList';
 import CustomerList from './CustomerList';
+import CustomerForm from './CustomerForm';
 import Nav from './Nav';
 import SalespersonForm from './SalespersonForm';
 
@@ -25,6 +26,7 @@ function App(props) {
           <Route path="/salespeople" element={<SalespeopleList />} />
           <Route path="/salespeople/create" element={<SalespersonForm />} />
           <Route path="/customers" element={<CustomerList />} />
+          <Route path="/customers/create" element={<CustomerForm />} />
         </Routes>
       </div>
     </BrowserRouter>
