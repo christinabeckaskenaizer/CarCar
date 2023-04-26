@@ -10,6 +10,8 @@ class ManufacturerEncoder(ModelEncoder):
         "name",
     ]
 
+    # def get_extra_data(self, o):
+    #     return {"manufacturers": o.manufacturers.name}
 
 class VehicleModelEncoder(ModelEncoder):
     model = VehicleModel
