@@ -26,6 +26,15 @@ class SalespeopleDetailEncoder(ModelEncoder):
         "employee_id",
     ]
 
+class CustomerDetailEncoder(ModelEncoder):
+    model = Customer
+    properties = [
+        "first_name",
+        "last_name",
+        "address",
+        "phone_number",
+    ]
+
 
 # Create your views here.
 
@@ -45,4 +54,22 @@ def api_list_salespersons(request):
             salesperson,
             encoder=SalespeopleDetailEncoder,
             safe=False,
+        )
+
+@require_http_methods(["GET", "POST"])
+def api_list_customers(request):
+    if request.method=="GET":
+        customers = Customer.objects.all()
+        return JsonResponse(
+            {"customers":customers},
+            encoder=CustomerDetailEncoder,
+            safe=False,
+        )
+    else:
+        content = json.loads(request.body)
+        customer = Customer.objects.create(**content)
+        return JsonResponse(
+            customer,
+            encoder=CustomerDetailEncoder,
+            safe=False
         )
