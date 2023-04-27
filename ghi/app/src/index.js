@@ -9,17 +9,22 @@ root.render(
   </React.StrictMode>
 );
 
-async function loadManufacturerList() {
-  const response = await fetch('http://localhost:8100/api/manufacturers/');
-  if (response.ok) {
-    const data = await response.json();
+async function loadInventoryList() {
+  const Manufacturerresponse = await fetch('http://localhost:8100/api/manufacturers/');
+
+  if (Manufacturerresponse.ok) {
+    const ManufacturerData = await Manufacturerresponse.json();
+    console.log(ManufacturerData)
+
     root.render(
       <React.StrictMode>
-        <App manufacturer={data.manufacturers} />
+        <App manufacturer={ManufacturerData.manufacturers} />
       </React.StrictMode>
     );
+
+
   } else {
-    console.error(response);
+    console.error('dis not working');
   }
 }
-loadManufacturerList();
+loadInventoryList();

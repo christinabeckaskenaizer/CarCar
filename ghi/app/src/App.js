@@ -9,6 +9,9 @@ import CustomerForm from './CustomerForm';
 import Nav from './Nav';
 import ManufacturersList from './ManufacturersList';
 import CreateManufacturer from './CreateManufacturer';
+import SalespersonForm from './SalespersonForm';
+import VehicleList from './VehicleList';
+
 
 
 function App(props) {
@@ -17,13 +20,8 @@ function App(props) {
   }
 
 
-import SalespersonForm from './SalespersonForm';
 
-function App(props) {
 
-  // if (props.autos === undefined) {
-  //   return null;
-  // }
   return (
     <BrowserRouter>
       <Nav />
@@ -39,6 +37,7 @@ function App(props) {
           <Route path="/salespeople/create" element={<SalespersonForm />} />
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/customers/create" element={<CustomerForm />} />
+          <Route path="/models" element={<VehicleList />} />
         </Routes>
       </div>
     </BrowserRouter>
