@@ -69,7 +69,9 @@ export default function SalesForm() {
         const automobileResponse = await fetch("http://localhost:8100/api/automobiles/");
         const automobileData = await automobileResponse.json();
         if (automobileResponse.ok) {
-            setAutos(automobileData.autos);
+            setAutos(automobileData.autos.filter(function (auto) {
+                return auto.sold === false;
+            }));
         }
     }
 
