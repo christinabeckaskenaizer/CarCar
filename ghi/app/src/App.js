@@ -8,6 +8,8 @@ import CustomerList from './CustomerList';
 import CustomerForm from './CustomerForm';
 import Nav from './Nav';
 import SalespersonForm from './SalespersonForm';
+import SalesForm from './SalesForm';
+import SalesList from './SalesList';
 
 function App(props) {
 
@@ -27,6 +29,8 @@ function App(props) {
           <Route path="/salespeople/create" element={<SalespersonForm />} />
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/customers/create" element={<CustomerForm />} />
+          <Route path="/sales/create" element={<SalesForm />} />
+          <Route path="/sales" element={<SalesList />} />
         </Routes>
       </div>
     </BrowserRouter>

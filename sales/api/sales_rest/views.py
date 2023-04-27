@@ -35,6 +35,24 @@ class CustomerDetailEncoder(ModelEncoder):
         "phone_number",
     ]
 
+class AutomobileVOEncoder(ModelEncoder):
+    model=AutomobileVO
+    properties = ["vin"]
+
+class SalesListEncoder(ModelEncoder):
+    model = Sale
+    properties = [
+        "automobile",
+        "salesperson",
+        "customer",
+        "price",
+    ]
+    encoders = {
+        "automobile": AutomobileVOEncoder(),
+        "salesperson": SalespeopleDetailEncoder(),
+        "customer": CustomerDetailEncoder(),
+    }
+
 
 # Create your views here.
 
@@ -72,4 +90,46 @@ def api_list_customers(request):
             customer,
             encoder=CustomerDetailEncoder,
             safe=False
+        )
+
+@require_http_methods(["GET", "POST"])
+def api_list_sales(request):
+    if request.method=="GET":
+        sales = Sale.objects.all()
+        return JsonResponse(
+            {"sales":sales},
+            encoder = SalesListEncoder,
+            safe=False,
+        )
+    else:
+        #take body of request, load it as json string, and assign it to content
+        content = json.loads(request.body)
+        print(content["customer"])
+        #grab automobile from body and set it equal to auto_vin
+        auto_vin = content["automobile"]
+        #seaarch through automobileVO objects for automobile vin that we received from request body.
+        automobile = AutomobileVO.objects.get(vin=auto_vin)
+        #get whole sutomobile object
+        content["automobile"] = automobile
+
+        salesperson_id = content["salesperson"]
+
+        salesperson = Salesperson.objects.get(employee_id=salesperson_id)
+
+        content["salesperson"] = salesperson
+
+        customer_phone_number = content["customer"]
+
+        customer = Customer.objects.get(phone_number=customer_phone_number)
+
+        content["customer"] = customer
+
+
+
+
+        sale = Sale.objects.create(**content)
+        return JsonResponse(
+            sale,
+            encoder=SalesListEncoder,
+            safe=False,
         )

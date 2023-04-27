@@ -36,8 +36,8 @@ export default function CustomerList() {
                         <tr key={customer.phone_number}>
                             <td>{customer.first_name}</td>
                             <td>{customer.last_name}</td>
-                            <td>{customer.address}</td>
                             <td>{customer.phone_number}</td>
+                            <td>{customer.address}</td>
                         </tr>
                     )}
                 </tbody>
