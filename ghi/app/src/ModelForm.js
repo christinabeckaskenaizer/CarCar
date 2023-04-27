@@ -55,6 +55,8 @@ export default function ModelForm() {
             setManufacturers([]);
 
             alert("Model created!");
+
+            navigate("/models");
         } else {
             alert("Unable to create model!");
         }

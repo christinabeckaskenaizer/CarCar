@@ -34,6 +34,23 @@ export default function SalesForm() {
         setPrice(value);
     }
 
+    async function markAsSold(vin) {
+        const markedAsSoldUrl = `http://localhost:8100/api/automobiles/${vin}/`
+
+        const data = { sold: true };
+
+        const config = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        };
+
+        const updateVehicleResponse = await fetch(markedAsSoldUrl, config);
+
+        return updateVehicleResponse;
+
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -53,7 +70,9 @@ export default function SalesForm() {
         };
 
         const salesListResponse = await fetch(salesListUrl, config);
-        if (salesListResponse.ok) {
+        const updateVehicleResponse = await markAsSold(automobile);
+
+        if (salesListResponse.ok && updateVehicleResponse.ok) {
             const newSale = await salesListResponse.json();
 
             setAutos([]);
@@ -63,6 +82,7 @@ export default function SalesForm() {
             alert("Sale has been recorded!");
 
             navigate("/sales");
+
 
         } else {
             alert("Unable to create sale!");

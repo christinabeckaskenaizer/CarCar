@@ -13,6 +13,7 @@ import SalespersonForm from './SalespersonForm';
 import SalesForm from './SalesForm';
 import SalesList from './SalesList';
 import VehicleList from './VehicleList';
+import SalesPersonHistory from './SalesPersonHistory';
 
 
 
@@ -42,6 +43,7 @@ function App(props) {
           <Route path="/sales/create" element={<SalesForm />} />
           <Route path="/sales" element={<SalesList />} />
           <Route path="/models" element={<VehicleList />} />
+          <Route path="/sales/history" element={<SalesPersonHistory />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -126,8 +126,8 @@ def api_list_sales(request):
 
 
 
-
         sale = Sale.objects.create(**content)
+
         return JsonResponse(
             sale,
             encoder=SalesListEncoder,
