@@ -10,7 +10,6 @@ export default function CustomerForm() {
     const [address, setAddress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
-
     function firstNameChange(event) {
         const value = event.target.value;
         setFirstName(value);
@@ -58,8 +57,14 @@ export default function CustomerForm() {
             setLastName('');
             setAddress('');
             setPhoneNumber('');
+
+            alert("Customer created!");
+
+            navigate('/customers');
+
+        } else {
+            alert("Unable to create Customer!");
         }
-        navigate('/customers');
     }
 
     return (

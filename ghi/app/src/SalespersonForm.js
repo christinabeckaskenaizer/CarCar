@@ -47,7 +47,11 @@ export default function SalespersonForm() {
             setLastName('');
             setEmployeeId('');
 
+            alert("Salesperson created!");
+
             navigate('/salespeople');
+        } else {
+            alert("Unable to create salesperson!");
         }
 
     }

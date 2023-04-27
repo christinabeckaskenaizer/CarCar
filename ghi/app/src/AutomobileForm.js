@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AutomobileForm(props) {
   const [color, setColor] = useState("");
@@ -7,6 +8,8 @@ export default function AutomobileForm(props) {
   const [vin, setVin] = useState("");
   const [model, setModel] = useState("");
   const [models, setModels] = useState([]);
+
+  const navigate = useNavigate();
 
   function colorChange(event) {
     const value = event.target.value;
@@ -37,6 +40,8 @@ export default function AutomobileForm(props) {
     data.model_id = model;
 
 
+
+
     const automobileUrl = 'http://localhost:8100/api/automobiles/';
     const fetchConfig = {
       method: "post",
@@ -54,8 +59,17 @@ export default function AutomobileForm(props) {
       setYear('');
       setVin('');
       setModels([]);
+
+      alert("Automobile added!");
+
+      navigate('/automobiles');
+
+    } else {
+      alert("Unable to create autombile!");
     }
   }
+
+
   const fetchData = async () => {
     const modelUrl = 'http://localhost:8100/api/models/';
     const response = await fetch(modelUrl);

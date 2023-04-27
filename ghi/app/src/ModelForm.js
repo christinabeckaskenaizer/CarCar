@@ -1,11 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ModelForm() {
     const [modelName, setModelName] = useState("");
     const [picture, setPicture] = useState("");
     const [manufacturer, setManufacturer] = useState(false);
     const [manufacturers, setManufacturers] = useState([]);
+
+    const navigate = useNavigate();
 
     function modelNameChange(event) {
         const value = event.target.value;
@@ -50,6 +53,10 @@ export default function ModelForm() {
             setModelName('');
             setPicture('');
             setManufacturers([]);
+
+            alert("Model created!");
+        } else {
+            alert("Unable to create model!");
         }
     }
     const fetchData = async () => {

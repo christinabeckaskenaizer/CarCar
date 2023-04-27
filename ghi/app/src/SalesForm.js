@@ -56,11 +56,16 @@ export default function SalesForm() {
         if (salesListResponse.ok) {
             const newSale = await salesListResponse.json();
 
-            // setAutos([]);
-            // setSalespersons([]);
-            // setCustomers([]);
-            // setPrice('');
+            setAutos([]);
+            setSalespersons([]);
+            setCustomers([]);
+            setPrice('');
+            alert("Sale has been recorded!");
+
             navigate("/sales");
+
+        } else {
+            alert("Unable to create sale!");
         }
 
     }
