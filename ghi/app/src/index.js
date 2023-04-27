@@ -9,19 +9,22 @@ root.render(
   </React.StrictMode>
 );
 
-// async function LoadAutomobiles() {
-//   const automobileResponse = await fetch("http://localhost:8100/api/automobiles/");
+async function loadInventoryList() {
+  const Manufacturerresponse = await fetch('http://localhost:8100/api/manufacturers/');
 
-//   if (automobileResponse.ok) {
-//     const automobileData = await automobileResponse.json();
-//     root.render(
-//       <React.StrictMode>
-//         <App autos={automobileData} />
-//       </React.StrictMode>
-//     );
-//   } else {
-//     console.error(automobileResponse);
-//   }
-// }
+  if (Manufacturerresponse.ok) {
+    const ManufacturerData = await Manufacturerresponse.json();
+    console.log(ManufacturerData)
 
-// LoadAutomobiles();
+    root.render(
+      <React.StrictMode>
+        <App manufacturer={ManufacturerData.manufacturers} />
+      </React.StrictMode>
+    );
+
+
+  } else {
+    console.error('dis not working');
+  }
+}
+loadInventoryList();
