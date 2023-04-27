@@ -5,6 +5,10 @@ from django.views.decorators.http import require_http_methods
 from .models import AutomobileVO, Technician, Appointment
 import json
 
+class AutomobileVO(ModelEncoder):
+    model = AutomobileVO
+    properties = ["vin"]
+
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
@@ -21,6 +25,7 @@ class AppointmentEncoder(ModelEncoder):
         "date_time",
         "reason",
         "status",
+        "vip",
         "vin",
         "customer",
         "technician"
@@ -30,39 +35,37 @@ class AppointmentEncoder(ModelEncoder):
     }
 
 @require_http_methods(["GET", "POST"])
-# vin=None filter the list of appointments
-def list_appointments(request, vin=None):
+def list_appointments(request):
     if request.method == "GET":
-        if vin == None:
-            appointments = Appointment.objects.all()
-            return JsonResponse(
-                {"appointments": appointments},
-                encoder=AppointmentEncoder
-            )
-        else:
-            try:
-                appointments = Appointment.objects.filter(vin=vin)
-                return JsonResponse(
-                    {"appointments": appointments},
-                    encoder=AppointmentEncoder
-                )
-            except Appointment.DoesNotExist:
-                response = JsonResponse({"message": "Appointment is not here man"})
-                response.status_code = 404
-                return response
+        appointments = Appointment.objects.all()
 
-        # update technicians info
+        return JsonResponse(
+            {"appointments": appointments},
+            encoder=AppointmentEncoder,
+        )
     else:
         content = json.loads(request.body)
+
         try:
-            # retrieve technicians id from content
-            tech_id = content["technician"]
-            tech = Technician.objects.get(id=tech_id)
-            content["technician"] = tech
+            # retrieves the value of the "technician" key from the content dict and assings it to the tech id variable
+            technician_id = content["technician"]
+            technician = Technician.objects.get(id=technician_id)
+            content["technician"] = technician
         except Technician.DoesNotExist:
             return JsonResponse(
-                {"message": "wrong technician id number"}
+                {"message": "No techs found"},
+                status=400,
             )
+        vin = content["vin"]
+        if AutomobileVO.objects.filter(vin=vin).exists():
+            content["is_vip"] = True
+        appointment = Appointment.objects.create(**content)
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentEncoder,
+            safe=False,
+        )
+
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
