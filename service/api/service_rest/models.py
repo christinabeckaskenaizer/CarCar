@@ -12,7 +12,7 @@ class Technician(models.Model):
     employee_id = models.IntegerField(unique=True)
 
 
-class Appointment(models.Models):
+class Appointment(models.Model):
     date_time = models.DateTimeField()
     reason = models.TextField(max_length=500)
     status = models.BooleanField(default=False)

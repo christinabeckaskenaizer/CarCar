@@ -15,25 +15,14 @@ from service_rest.models import AutomobileVO
 
 def poll():
     while True:
-        print('service poller polling for data')
+        print('Service poller polling for data')
         try:
-            # Write your polling logic, here
-            url = "http://inventory-api:8100/api/automobiles/"
-            response = requests.get(url)
+            response = requests.get("http://project-beta-inventory-api-1:8000/api/automobiles")
             content = json.loads(response.content)
-
             for automobile in content["autos"]:
                 AutomobileVO.objects.update_or_create(
-                    vin=automobile['vin']
-                    defaults=
-                    {
-                    "color": automobile["color"],
-                    "year": automobile["year"],
-                    "import_href": automobile["href"],
-
-                    }
+                    vin=automobile["vin"]
                 )
-
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)

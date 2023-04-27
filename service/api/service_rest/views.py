@@ -109,7 +109,7 @@ def list_technicians(request):
     if request.method == "GET":
         technicians = Technician.objects.all()
         return JsonResponse(
-            {"technicians": technicians}
+            {"technicians": technicians},
             encoder=TechnicianEncoder
         )
     else:
@@ -142,6 +142,10 @@ def show_technician(request, id):
             technician = Technician.objects.get(id=id), technician.delete()
             return JsonResponse(
                 {"message": "no mo tech"}
+            )
+        except Technician.DoesNotExist:
+            response = JsonResponse(
+                {"message": "no tech here"}
             )
     else:
         content = json.loads(request.body)
