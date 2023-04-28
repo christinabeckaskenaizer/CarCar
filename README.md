@@ -102,3 +102,26 @@ The sales microservice allows for creation of a salesperson, a customer, and a n
 | List all Customers   | <ul><li>List all Customers using the Customer Model</li><li>Method: GET</li><li> http://localhost:8090/api/customers/</li></ul>       | None                                                                                                                              | {<br />"customers": [<br />{<br />"first_name": "Cherry",<br />"last_name": "Garcia",<br />"address": "425 Elm St",<br />"phone_number": "9096846101"<br />}]<br />}                                                                                                                                                                                                                                                                                                                                                                                  |
 | Record a New Sale    | <ul><li>Add a sale using the Sale model</li><li>Method: POST</li><li>http://localhost:8090/api/salespeople/</li></ul>                 | {<br/>"automobile": "HFYRH64HEFSVZCSDQ",<br/>"salesperson": "CRey",<br/>"customer": "9095554321",<br/>"price": 5000.000<br/>}     | {<br/>"automobile": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vin": "HFYRH64HEFSVZCSDQ"<br/>},<br/>"salesperson": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Christina",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Reyes",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"employee_id": "CRey"<br/>},<br/>customer": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Crispy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Tuna",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"address": "1460 Gilbert Ct",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"phone_number": "9095554321"<br/>}, <br/>"price": 5000.0<br/>} |
 | List all Sales       | <ul><li>List all sales using the Sales Model</li><li>Method: GET</li><li>http://localhost:8090/api/salespeople/</li></ul>             | None                                                                                                                              | d                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+{
+"sales": [
+{
+"automobile": {
+"vin": "jds98d7f6d5s4wre3"
+},
+"salesperson": {
+"first_name": "Christina",
+"last_name": "Reyes",
+"employee_id": "CRey"
+},
+"customer": {
+"first_name": "Cherry",
+"last_name": "Garcia",
+"address": "425 Elm St",
+"phone_number": "9096846101"
+},
+"price": 5000.0
+},
+{
+"automobile": {
+"vin": "IKU76DG54RSFZXVCL"},"salesperson": {"first_name": "Indy","last_name": "Jones","employee_id": "Ijon"},"customer": {"first_name": "Cherry","last_name": "Garcia","address": "425 Elm St","phone_number": "9096846101"},"price": 5000.0},]
