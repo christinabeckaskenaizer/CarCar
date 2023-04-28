@@ -104,7 +104,6 @@ def api_list_sales(request):
     else:
         #take body of request, load it as json string, and assign it to content
         content = json.loads(request.body)
-        print(content["customer"])
         #grab automobile from body and set it equal to auto_vin
         auto_vin = content["automobile"]
         #seaarch through automobileVO objects for automobile vin that we received from request body.
