@@ -122,7 +122,7 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 |-------------------------|--------|--------------------------------------------|
 | List Technicians        | GET    | http://localhost:8080/api/technicians/     |
 | Create a Technician     | POST   | http://localhost:8080/api/technicians/     |
-| Show Technician Details | GET    | http://localhost:8080/api/technicians/:id/ |
+| Delete Technician       | Delete | http://localhost:8080/api/technicians/:id/|
 
 <details>
 <summary><strong>List Technicians Output</strong></summary>
@@ -175,18 +175,13 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 </details>
 
 <details>
-<summary><strong>Show Technicians Details Output</strong></summary>
+<summary><strong>Delete Technicians Output</strong></summary>
 <br>
 
 #### Output:
 ```
 {
-	"technician": {
-		"first_name": "Jay",
-		"last_name": "Kumar",
-		"employee_id": "12",
-		"id": 8
-	}
+    "Technician has been deleted"
 }
 ```
 </details>
