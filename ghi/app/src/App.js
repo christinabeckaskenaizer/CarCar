@@ -30,24 +30,24 @@ function App(props) {
 
 
   async function fetchTechsList() {
-      const Techresponse = await fetch('http://localhost:8080/api/technicians/')
+    const Techresponse = await fetch('http://localhost:8080/api/technicians/')
 
-      if (Techresponse.ok) {
+    if (Techresponse.ok) {
 
-          const TechData = await Techresponse.json();
-          setTech(TechData.technicians)
-      }
+      const TechData = await Techresponse.json();
+      setTech(TechData.technicians)
+    }
 
   }
 
   useEffect(() => {
     fetchTechsList()
-}, []);
+  }, []);
 
 
-if (props.manufacturer === undefined) {
-  return null;
-}
+  if (props.manufacturer === undefined) {
+    return null;
+  }
 
   return (
     <BrowserRouter>
