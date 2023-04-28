@@ -5,11 +5,12 @@ function ManufacturerList(props) {
   const [manufacturers, setManufacturers] = useState([])
 
   async function getManufacturers() {
-    const manufacturerUrl = "http://localhost:8100/api/manufacturers/";
-    const response = await fetch(manufacturerUrl, { mode: "get" });
+    const url = "http://localhost:8100/api/manufacturers/";
+    const response = await fetch(url, { method: "get" });
 
     if (response.ok) {
-      const data = response.json();
+      const data = await response.json();
+      console.log(data)
       setManufacturers(data.manufacturers);
     }
 

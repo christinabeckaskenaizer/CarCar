@@ -12,8 +12,8 @@ function Nav() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturer">Manufacturers</NavLink>
-              <NavLink className="nav-link" to="/manufacturer/new"> Create a Manufacturer</NavLink>
+              <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
+              <NavLink className="nav-link" to="/manufacturers/create"> Create a Manufacturer</NavLink>
               <NavLink className="nav-link" to="/models"> Vehicle List</NavLink>
               <NavLink className="nav-link" to="/technicians/create"> Add a Technician</NavLink>
               <NavLink className="nav-link" to="/technicians"> Technicians</NavLink>
@@ -25,9 +25,6 @@ function Nav() {
 
 
 
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturer/new"> Create a Manufacturer</NavLink>
             </li>
             <NavLink className="nav-link" to="/models"> Models</NavLink>
             <NavLink className="nav-link" to='/models/create'>Create a Model</NavLink>
