@@ -1,11 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ModelForm() {
     const [modelName, setModelName] = useState("");
     const [picture, setPicture] = useState("");
     const [manufacturer, setManufacturer] = useState(false);
     const [manufacturers, setManufacturers] = useState([]);
+
+    const navigate = useNavigate();
 
     function modelNameChange(event) {
         const value = event.target.value;
@@ -50,6 +53,12 @@ export default function ModelForm() {
             setModelName('');
             setPicture('');
             setManufacturers([]);
+
+            alert("Model created!");
+
+            navigate("/models");
+        } else {
+            alert("Unable to create model!");
         }
     }
     const fetchData = async () => {
@@ -75,11 +84,11 @@ export default function ModelForm() {
                     <form onSubmit={handleSubmit} id="create-model-form">
                         <div className="form-floating mb-3">
                             <input onChange={modelNameChange} placeholder="Model name" required type="text" name="name" id="name" className="form-control" value={modelName} />
-                            <label htmlFor="name">Model name</label>
+                            <label>Model name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={pictureChange} placeholder="Picture Url" required type="text" name="picture_url" id="picture_url" className="form-control" value={picture} />
-                            <label htmlFor="picture_url">Picture Url</label>
+                            <label>Picture Url</label>
                         </div>
                         <div className="mb-3">
                             <select required onChange={manufacturerChange} id="manufacturer" name="manufacturer" className="form-select" value={manufacturer}>

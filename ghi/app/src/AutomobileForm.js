@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AutomobileForm(props) {
   const [color, setColor] = useState("");
@@ -7,6 +8,8 @@ export default function AutomobileForm(props) {
   const [vin, setVin] = useState("");
   const [model, setModel] = useState("");
   const [models, setModels] = useState([]);
+
+  const navigate = useNavigate();
 
   function colorChange(event) {
     const value = event.target.value;
@@ -37,6 +40,8 @@ export default function AutomobileForm(props) {
     data.model_id = model;
 
 
+
+
     const automobileUrl = 'http://localhost:8100/api/automobiles/';
     const fetchConfig = {
       method: "post",
@@ -54,8 +59,17 @@ export default function AutomobileForm(props) {
       setYear('');
       setVin('');
       setModels([]);
+
+      alert("Automobile added!");
+
+      navigate('/automobiles');
+
+    } else {
+      alert("Unable to create autombile!");
     }
   }
+
+
   const fetchData = async () => {
     const modelUrl = 'http://localhost:8100/api/models/';
     const response = await fetch(modelUrl);
@@ -80,15 +94,15 @@ export default function AutomobileForm(props) {
           <form onSubmit={handleSubmit} id="create-model-form">
             <div className="form-floating mb-3">
               <input onChange={colorChange} placeholder="color" required type="text" name="color" id="color" className="form-control" value={color} />
-              <label htmlFor="name">Color</label>
+              <label>Color</label>
             </div>
             <div className="form-floating mb-3">
               <input onChange={yearChange} placeholder="year" required type="text" name="year" id="year" className="form-control" value={year} />
-              <label htmlFor="year">Year</label>
+              <label>Year</label>
             </div>
             <div className="form-floating mb-3">
               <input onChange={vinChange} placeholder="vin" required type="text" name="vin" id="vin" className="form-control" value={vin} />
-              <label htmlFor="picture_url">VIN</label>
+              <label>VIN</label>
             </div>
             <div className="mb-3">
               <select required onChange={modelChange} id="model" name="model" className="form-select" value={model}>

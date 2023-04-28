@@ -12,11 +12,6 @@ import ManufacturersList from './ManufacturersList';
 import CreateManufacturer from './CreateManufacturer';
 import SalespersonForm from './SalespersonForm';
 import VehicleList from './VehicleList';
-import TechnicianForm from './TechnicianForm';
-import TechnicianList from './TechnicianList';
-import ServiceAppointment from './ServiceAppointment';
-import ServiceAppointmentList from './ServiceAppointmentList';
-import ServiceHistory from './ServiceHistory';
 
 
 
@@ -62,12 +57,6 @@ if (props.manufacturer === undefined) {
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/customers/create" element={<CustomerForm />} />
           <Route path="/models" element={<VehicleList />} />
-          <Route path="/technicians/create" element={<TechnicianForm />} />
-          <Route path="/technicians" element={<TechnicianList Techmodels={Techmodels} />} />
-          <Route path="/appointments/create" element={<ServiceAppointment Techmodels={Techmodels} />} />
-          <Route path="/appointments" element={<ServiceAppointmentList />} />
-          <Route path="/service_history" element={<ServiceHistory />} />
-
         </Routes>
       </div>
     </BrowserRouter>

@@ -9,15 +9,6 @@ export default function AutomobileList() {
         updateList();
     }, []);
 
-    async function handleDeleteAutomobile(automobile) {
-        const url = `http://localhost:8100/api/automobiles/${automobile.vin}`
-        const response = await fetch(url, { method: 'DELETE' })
-        if (response.ok) {
-            const data = await response.json();
-            await updateList();
-        }
-    }
-
 
     async function updateList() {
 
@@ -43,7 +34,6 @@ export default function AutomobileList() {
                         <th>Model</th>
                         <th>Manufacturer</th>
                         <th>Sold</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +45,6 @@ export default function AutomobileList() {
                             <td>{automobile.model.name}</td>
                             <td>{automobile.model.manufacturer.name}</td>
                             <td>{automobile.sold ? "Yes" : "No"}</td>
-                            <td><button className="button" onClick={() => handleDeleteAutomobile(automobile.id)}>X</button></td>
                         </tr>
                     )}
                 </tbody>

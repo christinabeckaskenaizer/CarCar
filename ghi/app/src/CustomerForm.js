@@ -10,7 +10,6 @@ export default function CustomerForm() {
     const [address, setAddress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
-
     function firstNameChange(event) {
         const value = event.target.value;
         setFirstName(value);
@@ -58,8 +57,14 @@ export default function CustomerForm() {
             setLastName('');
             setAddress('');
             setPhoneNumber('');
+
+            alert("Customer created!");
+
+            navigate('/customers');
+
+        } else {
+            alert("Unable to create Customer!");
         }
-        navigate('/customers');
     }
 
     return (
@@ -70,19 +75,19 @@ export default function CustomerForm() {
                     <form onSubmit={handleSubmit} id="add-customer-form">
                         <div className="form-floating mb-3">
                             <input onChange={firstNameChange} placeholder="first Name" required type="text" name="first_name" id="first_name" className="form-control" value={firstName} />
-                            <label htmlFor="first_name">First Name</label>
+                            <label>First Name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={lastNameChange} placeholder="last Name" required type="text" name="last_name" id="last_name" className="form-control" value={lastName} />
-                            <label htmlFor="first_name">Last Name</label>
+                            <label>Last Name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={addressChange} placeholder="address" required type="text" name="address" id="address" className="form-control" value={address} />
-                            <label htmlFor="first_name">Address</label>
+                            <label>Address</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={phoneNumberChange} placeholder="phone number" required type="text" name="phone_number" id="phone_number" className="form-control" value={phoneNumber} />
-                            <label htmlFor="phone_number">Phone Number</label>
+                            <label>Phone Number</label>
                         </div>
                         <button type="submit" className="btn btn-primary">Create</button>
                     </form>
