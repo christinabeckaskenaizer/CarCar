@@ -59,8 +59,6 @@ export default function SalesForm() {
         data.salesperson = salesperson;
         data.customer = customer;
         data.price = price;
-        console.log(data);
-        console.log(customer);
 
         const salesListUrl = "http://localhost:8090/api/sales/";
         const config = {

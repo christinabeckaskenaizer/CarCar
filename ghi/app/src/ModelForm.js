@@ -84,11 +84,11 @@ export default function ModelForm() {
                     <form onSubmit={handleSubmit} id="create-model-form">
                         <div className="form-floating mb-3">
                             <input onChange={modelNameChange} placeholder="Model name" required type="text" name="name" id="name" className="form-control" value={modelName} />
-                            <label htmlFor="name">Model name</label>
+                            <label>Model name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={pictureChange} placeholder="Picture Url" required type="text" name="picture_url" id="picture_url" className="form-control" value={picture} />
-                            <label htmlFor="picture_url">Picture Url</label>
+                            <label>Picture Url</label>
                         </div>
                         <div className="mb-3">
                             <select required onChange={manufacturerChange} id="manufacturer" name="manufacturer" className="form-select" value={manufacturer}>

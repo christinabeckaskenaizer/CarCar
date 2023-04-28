@@ -42,7 +42,6 @@ export default function SalespersonForm() {
 
         if (employeeResponse.ok) {
             const newEmployee = await employeeResponse.json();
-            console.log(newEmployee);
             setFirstName('');
             setLastName('');
             setEmployeeId('');
@@ -64,17 +63,17 @@ export default function SalespersonForm() {
                     <form onSubmit={handleSubmit} id="add-a-salesperson-form">
                         <div className="form-floating mb-3">
                             <input onChange={firstNameChange} placeholder="First name" required type="text" name="first_name" id="first_name" className="form-control" value={firstName} />
-                            <label htmlFor="first_name">First Name</label>
+                            <label>First Name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={lastNameChange} placeholder="Last name" required type="text" name="last_name" id="last_name" className="form-control" value={lastName} />
-                            <label htmlFor="first_name">Last Name</label>
+                            <label>Last Name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={employeeIdChange} placeholder="employee id" required type="text" name="employee_id" id="employee_id" className="form-control" value={employeeId} />
-                            <label htmlFor="employee_id">Employee Id</label>
+                            <label>Employee Id</label>
                         </div>
-                        <button className="btn btn-primary">Create</button>
+                        <button>Create</button>
                     </form>
                 </div>
             </div>

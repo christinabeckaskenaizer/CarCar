@@ -15,7 +15,6 @@ export default function SalesPersonHistory() {
         const salespersonsResponse = await fetch(salespersonsUrl, { method: "GET" })
         if (salespersonsResponse.ok) {
             const data = await salespersonsResponse.json();
-            console.log(data);
             setSalespeople(data.salespersons)
         }
     }
@@ -31,7 +30,6 @@ export default function SalesPersonHistory() {
 
         setFiltered(filteredSales);
 
-        console.log("CHANGED:", filteredSales);
 
     }
 
@@ -40,7 +38,6 @@ export default function SalesPersonHistory() {
         const salesListResponse = await fetch(salesListUrl, { method: "GET" })
         if (salesListResponse.ok) {
             const data = await salesListResponse.json();
-            console.log(data);
             setSales(data.sales);
         }
     }
