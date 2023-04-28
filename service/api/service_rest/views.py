@@ -5,9 +5,7 @@ from django.views.decorators.http import require_http_methods
 from .models import AutomobileVO, Technician, Appointment
 import json
 
-class AutomobileVO(ModelEncoder):
-    model = AutomobileVO
-    properties = ["vin"]
+# Create your views here.
 
 
 class TechnicianEncoder(ModelEncoder):
@@ -15,50 +13,64 @@ class TechnicianEncoder(ModelEncoder):
     properties = [
         "first_name",
         "last_name",
-        "employee_id"
+        "employee_id",
+        "id"
     ]
+
 
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
         "id",
-        "date_time",
-        "reason",
-        "status",
-        "vip",
         "vin",
         "customer",
-        "technician"
+        "date_time",
+        "technician",
+        "reason",
+        "vip",
+        "status"
     ]
-    encoder = {
+
+    encoders = {
         "technician": TechnicianEncoder(),
     }
 
-@require_http_methods(["GET", "POST"])
-def list_appointments(request):
-    if request.method == "GET":
-        appointments = Appointment.objects.all()
 
-        return JsonResponse(
+
+@require_http_methods(["GET", "POST"])
+def list_appointments(request, vin=None):
+    if request.method == "GET":
+        if vin == None:
+            appointments = Appointment.objects.all()
+            return JsonResponse(
             {"appointments": appointments},
-            encoder=AppointmentEncoder,
+            encoder=AppointmentEncoder
         )
+        else:
+            try:
+                appointments = Appointment.objects.filter(vin=vin)
+                return JsonResponse(
+            {"appointments": appointments},
+            encoder=AppointmentEncoder
+        )
+            except Appointment.DoesNotExist:
+                response = JsonResponse({"message": "Appointment does not exist"})
+                response.status_code = 404
+                return response
     else:
         content = json.loads(request.body)
-
         try:
-            # retrieves the value of the "technician" key from the content dict and assings it to the tech id variable
-            technician_id = content["technician"]
-            technician = Technician.objects.get(id=technician_id)
-            content["technician"] = technician
+            tech_id = content["technician"]
+            tech = Technician.objects.get(first_name=tech_id)
+            content["technician"] = tech
         except Technician.DoesNotExist:
             return JsonResponse(
-                {"message": "No techs found"},
-                status=400,
+                {"message": "Invalid tech id"}
             )
-        vin = content["vin"]
-        if AutomobileVO.objects.filter(vin=vin).exists():
-            content["is_vip"] = True
+        if AutomobileVO.objects.filter(vin=content["vin"]).exists():
+            content["vip"] = True
+        else:
+            content["vip"] = False
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             appointment,
@@ -68,9 +80,9 @@ def list_appointments(request):
 
 
 
+
 @require_http_methods(["GET", "PUT", "DELETE"])
 def show_appointment(request, id):
-    # GET
     if request.method == "GET":
         try:
             appointment = Appointment.objects.get(id=id)
@@ -80,23 +92,22 @@ def show_appointment(request, id):
                 safe=False
             )
         except Appointment.DoesNotExist:
-            response = JsonResponse({"message": "appointment does not exist"})
+            response = JsonResponse({"message":"Appointment does not exist"})
             response.status_code = 404
             return response
-        # ----------------------------------------------
-        # DELETE
     elif request.method == "DELETE":
         try:
             appointment = Appointment.objects.get(id=id)
             appointment.delete()
             return JsonResponse(
-                {"message": "muahhahahaa deleted"}
+                {"message": "Appointment deleted"}
             )
         except Appointment.DoesNotExist:
-            response = JsonResponse({"message": "appointment does not exist"})
+            response = JsonResponse(
+                {"message": "Appointment does not exist"}
+            )
             response.status_code = 404
-        # --------------------------------------------------
-        # PUT
+            return response
     else:
         content = json.loads(request.body)
         Appointment.objects.update_or_create(id=id, defaults={'status': content['status']})
@@ -121,8 +132,9 @@ def list_technicians(request):
         return JsonResponse(
             technician,
             encoder=TechnicianEncoder,
-            safe=False
+            safe=False,
         )
+
 
 @require_http_methods(["GET", "PUT", "DELETE"])
 def show_technician(request, id):
@@ -132,11 +144,11 @@ def show_technician(request, id):
             return JsonResponse(
                 technician,
                 encoder=TechnicianEncoder,
-                safe=False
+                safe=False,
             )
         except Technician.DoesNotExist:
             response = JsonResponse(
-                {"message": "tech does not exist"}
+                {"message": "Technician does not exist"}
             )
             response.status_code = 404
             return response
@@ -144,17 +156,18 @@ def show_technician(request, id):
         try:
             technician = Technician.objects.get(id=id), technician.delete()
             return JsonResponse(
-                {"message": "no mo tech"}
+                {"message": "Technician has been deleted"}
             )
         except Technician.DoesNotExist:
             response = JsonResponse(
-                {"message": "no tech here"}
+                {"message": "Technician does not exist"}
             )
     else:
         content = json.loads(request.body)
         Technician.objects.filter(id=id).update(**content)
+        technician = Technician.objects.get(id=id)
         return JsonResponse(
             technician,
             encoder=TechnicianEncoder,
-            safe=False
+            safe=False,
         )
