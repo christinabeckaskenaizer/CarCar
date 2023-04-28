@@ -17,7 +17,7 @@ Please see below for a diagram that illustrates our three microservices in the a
 
 In order to get started, please install and run [Docker Desktop](https://docs.docker.com/get-docker/).
 
-##Cloning and Docker
+## Cloning and Docker
 
 - Clone this repository onto your machine by proceeding to your terminal and navigating to the directory you want this project to exist.
 - Type git clone https://gitlab.com/kumaravisha96/project-beta
@@ -28,7 +28,7 @@ In order to get started, please install and run [Docker Desktop](https://docs.do
   &nbsp;&nbsp;&nbsp;&nbsp;3. docker-compose up
 - This project consists of seven containers that must be running in order to get the full functionality of the app.
 
-##Run the Server
+## Run the Server
 
 - Once you have successfully run your Docker containers, you can access CarCar at http://localhost:3000/. Once there, you can use our navigation bar to direct you to your desired feature(s). See below for more navigation bar details.
 
@@ -63,7 +63,7 @@ In order to get started, please install and run [Docker Desktop](https://docs.do
 
 ## Inventory microservice
 
-##Models
+## Models
 
 1. **Manufacturer** - Contains a name field.
 2. **VehicleModel** - Contains a name, picture_url field. Also, a manufacturer field with a foreign key to the Manufacturer model.
@@ -87,7 +87,7 @@ microservice, here.
 
 The sales microservice allows for creation of a salesperson, a customer, and a new sale. It also maintains lists of salespeople, customers, and sales.
 
-##Models
+## Models
 
 1. **Salesperson** - Contains a first_name, last_name, and employee_id field.
 2. **Customer** - Contains a first_name, last_name, address, and phone_number field.
