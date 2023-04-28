@@ -11,7 +11,15 @@ import Nav from './Nav';
 import ManufacturersList from './ManufacturersList';
 import CreateManufacturer from './CreateManufacturer';
 import SalespersonForm from './SalespersonForm';
-import VehicleList from './VehicleList';
+import TechnicianForm from './TechnicianForm';
+import TechnicianList from './TechnicianList';
+import ServiceAppointment from './ServiceAppointment';
+import ServiceAppointmentList from './ServiceAppointmentList';
+import ServiceHistory from './ServiceHistory';
+import SalesForm from './SalesForm';
+import SalesList from './SalesList';
+import ModelList from './ModelList';
+import SalesPersonHistory from './SalesPersonHistory';
 
 
 
@@ -56,7 +64,16 @@ if (props.manufacturer === undefined) {
           <Route path="/salespeople/create" element={<SalespersonForm />} />
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/customers/create" element={<CustomerForm />} />
-          <Route path="/models" element={<VehicleList />} />
+          <Route path="/technicians/create" element={<TechnicianForm />} />
+          <Route path="/technicians" element={<TechnicianList Techmodels={Techmodels} />} />
+          <Route path="/appointments/create" element={<ServiceAppointment Techmodels={Techmodels} />} />
+          <Route path="/appointments" element={<ServiceAppointmentList />} />
+          <Route path="/service_history" element={<ServiceHistory />} />
+
+          <Route path="/sales/create" element={<SalesForm />} />
+          <Route path="/sales" element={<SalesList />} />
+          <Route path="/models" element={<ModelList />} />
+          <Route path="/sales/history" element={<SalesPersonHistory />} />
         </Routes>
       </div>
     </BrowserRouter>
