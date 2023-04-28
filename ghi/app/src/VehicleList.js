@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css"
 
 function VehicleList(props) {
-    // if (!props.models) {
-    //     console.log(props)
-    //     return <div>loading...</div>
-    // }
+
 
 
     const [models, setModels] = useState([])
