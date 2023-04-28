@@ -15,6 +15,10 @@ function ManufacturerList(props) {
 
   }
 
+  useEffect(() => {
+    getManufacturers();
+  }, [])
+
   return (
     <table className="table table-striped">
       <thead>
