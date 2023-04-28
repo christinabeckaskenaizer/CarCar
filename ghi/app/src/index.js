@@ -14,7 +14,6 @@ async function loadInventoryList() {
 
   if (Manufacturerresponse.ok) {
     const ManufacturerData = await Manufacturerresponse.json();
-    console.log(ManufacturerData)
 
     root.render(
       <React.StrictMode>

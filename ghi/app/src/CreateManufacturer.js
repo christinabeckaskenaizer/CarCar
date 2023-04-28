@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CreateManufacturer(props) {
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,6 +28,8 @@ function CreateManufacturer(props) {
       const newManufacturer = await response.json();
 
       setName('');
+      alert('Manufacturer Created!');
+      navigate('/manufacturers')
     }
 
   }

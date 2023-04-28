@@ -31,8 +31,8 @@ function App(props) {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="manufacturer" element={<ManufacturersList manufacturer={props.manufacturer} />} />
-          <Route path="manufacturer/new" element={<CreateManufacturer />} />
+          <Route path="manufacturers" element={<ManufacturersList manufacturer={props.manufacturer} />} />
+          <Route path="manufacturers/create" element={<CreateManufacturer />} />
           <Route path="/models/create" element={<ModelForm />} />
           <Route path="/automobiles" element={<AutomobileList />} />
           <Route path="/automobiles/create" element={<AutomobileForm />} />
