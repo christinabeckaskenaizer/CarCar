@@ -30,7 +30,7 @@ function TechnicianList({ Techmodels }) {
         </tr>
       </thead>
       <tbody>
-        {Techmodels.map((tech) => (
+        {techs.map((tech) => (
 
           <tr key={tech.id}>
             <td>{tech.employee_id}</td>
