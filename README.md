@@ -75,40 +75,44 @@ In order to get started, please install and run [Docker Desktop](https://docs.do
 | List all Manufacturers  | <ul><li>List all manufacturers using the Manufacturer Model</li><li>Method: GET</li><li>http://localhost:8100/api/manufacturers/</li></ul> | None                                                                                                                                            | {<br/>"manufacturers": [<br/> {"href": "/api/manufacturers/1/",<br/>"id": 1,<br/>"name": "Chrysler" }]<br/>}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Add a Vehicle Model     | <ul><li>Add a Vehicle Model using the VehicleModel Model</li><li>Method: POST</li><li>http://localhost:8100/api/models/</li></ul>          | {<br/> "name": "Q4",<br/> "picture_url": "https://cdn.arstechnica.net/wp-content/uploads/2022/07/4E9A8861.jpg",<br/> "manufacturer_id": 1<br/>} | {<br/>"href": "/api/models/4/",<br/> "id": 4,<br/> "name": "Q4",<br/> "picture_url": "https://cdn.arstechnica.net/wp-content/uploads/2022/07/4E9A8861.jpg",<br/> "manufacturer": {<br/>&nbsp;&nbsp;&nbsp;"href": "/api/manufacturers/1/",<br/> &nbsp;&nbsp;&nbsp;"id": 1,<br/>&nbsp;&nbsp;&nbsp;"name": "Chrysler"<br/> }<br/>}                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | List all Vehicle Models | <ul><li>List all Vehicle Models using the VehicleModel Model</li><li>Method: GET</li><li> http://localhost:8100/api/models/</li></ul>      | None                                                                                                                                            | {<br>&nbsp;&nbsp;&nbsp;"models": [<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"href": "/api/models/1/",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 1,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "Spark",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"picture_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUPVmruZoQj3-PzbdOTKWBxoynXsJuWUAGTQ&usqp=CAU",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"manufacturer": {<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"href": "/api/manufacturers/1/",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": 1,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "Chrysler"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>&nbsp;&nbsp; ] <br>} |
-| Create an automobile    | <ul><li>Create an automobile using the Automobile model</li><li>Method: POST</li><li>http://localhost:8100/api/automobiles/</li></ul>      | {<br/>"automobile": "HFYRH64HEFSVZCSDQ",<br/>"salesperson": "CRey",<br/>"customer": "9095554321",<br/>"price": 5000.000<br/>}                   | HERE!                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| List all automobiles    | <ul><li>List all automobiles using the Automobile Model</li><li>Method: GET</li><li>http://localhost:8100/api/automobiles/</li></ul>       | None                                                                                                                                            | d                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Create an automobile    | <ul><li>Create an automobile using the Automobile model</li><li>Method: POST</li><li>http://localhost:8100/api/automobiles/</li></ul>      | {<br/>"color": "blue",<br/>"year": 2012<br/>"vin": "76HYSZFR43VIN7654",<br/>"model_id": 1,<br/>"sold": false<br/>}                              | {<br/>"href": "/api/automobiles/76HYSZFR43VIN7654/",<br/>"id": 13,<br/>"color": "blue",<br/>"year": 2012,<br/>"vin": "76HYSZFR43VIN7654",<br/>"model": {<br/>"href": "/api/models/1/",<br/>"id": 1,<br/>"name": "Spark",<br/>"picture_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUPVmruZoQj3-PzbdOTKWBxoynXsJuWUAGTQ&usqp=CAU",<br/>"manufacturer": {<br/>"href": "/api/manufacturers/1/",<br/>"id": 1,<br/>"name": "Chrysler"<br/>}<br/>},<br/>"sold": false<br/>}                                                                                                                                                                                                                                                                                          |
+| List all automobiles    | <ul><li>List all automobiles using the Automobile Model</li><li>Method: GET</li><li>http://localhost:8100/api/automobiles/</li></ul>       | None                                                                                                                                            | {<br/>"autos": [<br/>{<br/>"href": "/api/automobiles/jds98d7f6d5s4wre3/",<br/>"id": 1,<br/>"color": "White",<br/>"year": 2020,<br/>"vin": "jds98d7f6d5s4wre3", <br/>"model": {<br/>"href": "/api/models/1/",<br/>"id": 1,<br/>"name": "Spark",<br/>"picture_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUPVmruZoQj3-PzbdOTKWBxoynXsJuWUAGTQ&usqp=CAU",<br/>"manufacturer": {<br/>"href": "/api/manufacturers/1/",<br/>"id": 1,<br/>"name": "Chrysler"<br/>}<br/>},<br/>"sold": true<br/>}<br/>]<br/>}                                                                                                                                                                                                                                                         |
 
 ## Service microservice
 
-
 This application serves the purpose of:
+
 - Helping people manage and keep track of their car service appointments
 - Allow users to create appointments using a simple form
 - Provide a list of scheduled appointments
 
 #### Front-End
+
 The application allows users to update the status of their appointments, indicating whether they have been cancelled or completed. Additionally, users can provide information about the assigned technicians through a dedicated form. Furthermore, the app provides access to a service history view, which enables users to review past car services.
 
-
 #### Back-End
+
 The back-end operations involve generating appointments and technician profiles, and storing their respective details.
 To augment the overall user experience, the application incorporates an inventory microservice that utilizes the Vehicle Identification Number (VIN) to authenticate whether the automobile has already been sold by the dealership.
 
 ##### Polling
+
 Every 60 seconds, the Service microservice polls the Inventory microservice for automobile updates
 
- ### RestFul API (PORT 8080):
+### RestFul API (PORT 8080):
 
- #### Appointments
-| Action                   | Method | URL                                                     |
-|--------------------------|--------|---------------------------------------------------------|
-| List All Appointments    | GET    | http://localhost:8080/api/appointments/                 |
+#### Appointments
+
+| Action                | Method | URL                                     |
+| --------------------- | ------ | --------------------------------------- |
+| List All Appointments | GET    | http://localhost:8080/api/appointments/ |
 
 <details>
 <summary><strong>List Appointments Output</strong></summary>
 <br>
 
 #### Output:
+
 ```
 {
 	"appointments": [
@@ -185,21 +189,23 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 	]
 }
 ```
+
 </details>
 
-
 ### Technicians:
-| Action                  | Method | URL                                        |
-|-------------------------|--------|--------------------------------------------|
-| List Technicians        | GET    | http://localhost:8080/api/technicians/     |
-| Create a Technician     | POST   | http://localhost:8080/api/technicians/     |
-| Delete Technician       | Delete | http://localhost:8080/api/technicians/:id/|
+
+| Action              | Method | URL                                        |
+| ------------------- | ------ | ------------------------------------------ |
+| List Technicians    | GET    | http://localhost:8080/api/technicians/     |
+| Create a Technician | POST   | http://localhost:8080/api/technicians/     |
+| Delete Technician   | Delete | http://localhost:8080/api/technicians/:id/ |
 
 <details>
 <summary><strong>List Technicians Output</strong></summary>
 <br>
 
 #### Output:
+
 ```
 {
 	"technicians": [
@@ -216,6 +222,7 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 	]
 }
 ```
+
 </details>
 
 <details>
@@ -223,6 +230,7 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 <br>
 
 #### Input:
+
 ```
 {
 	"first_name": "Jay",
@@ -233,6 +241,7 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 ```
 
 #### Output:
+
 ```
 {
 	"technician": {
@@ -243,6 +252,7 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 	}
 }
 ```
+
 </details>
 
 <details>
@@ -250,11 +260,13 @@ Every 60 seconds, the Service microservice polls the Inventory microservice for 
 <br>
 
 #### Output:
+
 ```
 {
     "Technician has been deleted"
 }
 ```
+
 </details>
 
 ## Sales microservice
@@ -268,34 +280,25 @@ The sales microservice allows for creation of a salesperson, a customer, and a n
 3. **Sale** - Contains a salesperson, customer, automobile, and price field. The salesperson field is a foreign key to the _Salesperson_ model, the customer field is a foreign key to the _Customer_ model, and the automobile field is a foreign key to the _AutomobileVO_ model.
 4. **AutomobileVO** - This model is our value object - it polls for data from the automobile Model in the Inventory API. When a model is updated/created in the Inventory API, that data is sent to our AutomobileVO model by using the VIN number to identify which automobile to update.
 
-| Action               | Action Description and URL                                                                                                            | JSON Body Input                                                                                                                   | Returned Information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Add a Salesperson    | <ul><li>Add a salesperson using the Salesperson Model</li><li>Method: POST</li><li>http://localhost:8090/api/salespeople/</li></ul>   | {<br />"first_name": "Lemon",<br /> "last_name": "Head",<br /> "employee_id": "LHea"<br />}                                       | {<br />"first_name": "Lemon",<br /> "last_name": "Head",<br /> "employee_id": "LHea"<br />}                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| List all Salespeople | <ul><li>List all salespeople using the Salesperson Model</li><li>Method: GET</li><li>http://localhost:8090/api/salespeople/</li></ul> | None                                                                                                                              | {<br />"salespersons": [<br />{"first_name": "Christina",<br />"last_name": "Reyes",<br />"employee_id": "CRey"<br />}]<br />}                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Add a Customer       | <ul><li>Add a customer using the Customer Model</li><li>Method: POST</li><li> http://localhost:8090/api/customers/</li></ul>          | {<br />"first_name": "Cherry",<br />"last_name": "Garcia",<br />"address": "425 Elm St",<br />"phone_number": "9096846101"<br />} | {<br />"first_name": "Cherry",<br />"last_name": "Garcia",<br />"address": "425 Elm St",<br />"phone_number": "9096846101"<br />}                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| List all Customers   | <ul><li>List all Customers using the Customer Model</li><li>Method: GET</li><li> http://localhost:8090/api/customers/</li></ul>       | None                                                                                                                              | {<br />"customers": [<br />{<br />"first_name": "Cherry",<br />"last_name": "Garcia",<br />"address": "425 Elm St",<br />"phone_number": "9096846101"<br />}]<br />}                                                                                                                                                                                                                                                                                                                                                                                  |
-| Record a New Sale    | <ul><li>Add a sale using the Sale model</li><li>Method: POST</li><li>http://localhost:8090/api/salespeople/</li></ul>                 | {<br/>"automobile": "HFYRH64HEFSVZCSDQ",<br/>"salesperson": "CRey",<br/>"customer": "9095554321",<br/>"price": 5000.000<br/>}     | {<br/>"automobile": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vin": "HFYRH64HEFSVZCSDQ"<br/>},<br/>"salesperson": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Christina",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Reyes",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"employee_id": "CRey"<br/>},<br/>customer": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Crispy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Tuna",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"address": "1460 Gilbert Ct",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"phone_number": "9095554321"<br/>}, <br/>"price": 5000.0<br/>} |
-| List all Sales       | <ul><li>List all sales using the Sales Model</li><li>Method: GET</li><li>http://localhost:8090/api/salespeople/</li></ul>             | None                                                                                                                              | d                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Action               | Action Description and URL                                                                                                            | JSON Body Input                                                                                                                   | Returned Information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| Add a Salesperson    | <ul><li>Add a salesperson using the Salesperson Model</li><li>Method: POST</li><li>http://localhost:8090/api/salespeople/</li></ul>   | {<br />"first_name": "Lemon",<br /> "last_name": "Head",<br /> "employee_id": "LHea"<br />}                                       | {<br />"first_name": "Lemon",<br /> "last_name": "Head",<br /> "employee_id": "LHea"<br />}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| List all Salespeople | <ul><li>List all salespeople using the Salesperson Model</li><li>Method: GET</li><li>http://localhost:8090/api/salespeople/</li></ul> | None                                                                                                                              | {<br />"salespersons": [<br />{"first_name": "Christina",<br />"last_name": "Reyes",<br />"employee_id": "CRey"<br />}]<br />}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Add a Customer       | <ul><li>Add a customer using the Customer Model</li><li>Method: POST</li><li> http://localhost:8090/api/customers/</li></ul>          | {<br />"first_name": "Cherry",<br />"last_name": "Garcia",<br />"address": "425 Elm St",<br />"phone_number": "9096846101"<br />} | {<br />"first_name": "Cherry",<br />"last_name": "Garcia",<br />"address": "425 Elm St",<br />"phone_number": "9096846101"<br />}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| List all Customers   | <ul><li>List all Customers using the Customer Model</li><li>Method: GET</li><li> http://localhost:8090/api/customers/</li></ul>       | None                                                                                                                              | {<br />"customers": [<br />{<br />"first_name": "Cherry",<br />"last_name": "Garcia",<br />"address": "425 Elm St",<br />"phone_number": "9096846101"<br />}]<br />}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Record a New Sale    | <ul><li>Add a sale using the Sale model</li><li>Method: POST</li><li>http://localhost:8090/api/salespeople/</li></ul>                 | {<br/>"automobile": "HFYRH64HEFSVZCSDQ",<br/>"salesperson": "CRey",<br/>"customer": "9095554321",<br/>"price": 5000.000<br/>}     | {<br/>"automobile": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vin": "HFYRH64HEFSVZCSDQ"<br/>},<br/>"salesperson": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Christina",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Reyes",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"employee_id": "CRey"<br/>},<br/>customer": {<br/>&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Crispy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Tuna",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"address": "1460 Gilbert Ct",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"phone_number": "9095554321"<br/>}, <br/>"price": 5000.0<br/>}                                                                                                                                                                                                                                                                                                                                         |
+| List all Sales       | <ul><li>List all sales using the Sales Model</li><li>Method: GET</li><li>http://localhost:8090/api/salespeople/</li></ul>             | None                                                                                                                              | {<br>"sales": [<br/>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"automobile": <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vin": "JIUSBHU765ZF43AWS"<br>},<br/>&nbsp;&nbsp;&nbsp;"salesperson": {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Christina",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"last_name": "Reyes",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"employee_id": "CRey"},<br/>&nbsp;&nbsp;&nbsp;"customer":<br/>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"first_name": "Cherry",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"last_name":"Garcia",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"address": "425 Elm St",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"phone_number": "9096846101"<br/>&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;"price": 5000.0<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |     |
 
-{
-"sales": [
-{
-"automobile": {
-"vin": "jds98d7f6d5s4wre3"
-},
-"salesperson": {
-"first_name": "Christina",
-"last_name": "Reyes",
-"employee_id": "CRey"
-},
-"customer": {
-"first_name": "Cherry",
-"last_name": "Garcia",
-"address": "425 Elm St",
-"phone_number": "9096846101"
-},
-"price": 5000.0
-},
-{
-"automobile": {
-"vin": "IKU76DG54RSFZXVCL"},"salesperson": {"first_name": "Indy","last_name": "Jones","employee_id": "Ijon"},"customer": {"first_name": "Cherry","last_name": "Garcia","address": "425 Elm St","phone_number": "9096846101"},"price": 5000.0},]
+<!-- <table>
+<tr>
+<td><b>Action</b></td>
+<td>Action Description and URL</td>
+<td>JSON Body Input</td>
+</tr>
+<tr>
+<td>
+
+
+
+</tr>
+</table> -->
