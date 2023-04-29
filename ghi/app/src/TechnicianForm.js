@@ -29,7 +29,8 @@ function TechnicianForm(props) {
 
             setFirstName('');
             setLastName('');
-            setEmployeeID('')
+            setEmployeeID('');
+
           }
 
       }
@@ -72,6 +73,8 @@ function TechnicianForm(props) {
         setLastName(data.last_name);
         setEmployeeID(data.employee_id);
 
+        alert("Technician created!");
+
         console.log(data)
     }
   }
@@ -79,6 +82,7 @@ function TechnicianForm(props) {
   useEffect(() => {
     fetchData();
   }, []);
+
 
 
 
@@ -104,6 +108,7 @@ function TechnicianForm(props) {
               </div>
               <button className="btn btn-primary">Create Technician</button>
             </form>
+
           </div>
         </div>
       </div>

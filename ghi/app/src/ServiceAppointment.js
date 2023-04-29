@@ -35,6 +35,9 @@ function ServiceAppointment({Techmodels}) {
             setTime('');
             setTechnician('');
             setReason('')
+
+            alert("Service Appointment created!");
+
           }
 
       }

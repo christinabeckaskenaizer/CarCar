@@ -25,6 +25,8 @@ function CreateManufacturer(props) {
       const newManufacturer = await response.json();
 
       setName('');
+      alert("Manufacturer created!");
+
     }
 
   }
