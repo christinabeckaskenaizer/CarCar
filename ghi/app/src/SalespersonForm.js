@@ -73,7 +73,7 @@ export default function SalespersonForm() {
                             <input onChange={employeeIdChange} placeholder="employee id" required type="text" name="employee_id" id="employee_id" className="form-control" value={employeeId} />
                             <label>Employee Id</label>
                         </div>
-                        <button>Create</button>
+                        <button className="btn btn-primary" >Create</button>
                     </form>
                 </div>
             </div>

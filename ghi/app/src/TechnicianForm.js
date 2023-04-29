@@ -29,6 +29,8 @@ function TechnicianForm(props) {
       setLastName('');
       setEmployeeID('');
 
+      alert("Technician created!");
+
     }
 
   }
@@ -70,8 +72,6 @@ function TechnicianForm(props) {
       setFirstName(data.first_name);
       setLastName(data.last_name);
       setEmployeeID(data.employee_id);
-
-      alert("Technician created!");
 
     }
   }
