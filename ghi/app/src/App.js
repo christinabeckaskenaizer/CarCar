@@ -57,6 +57,7 @@ function App(props) {
           <Route path="/" element={<MainPage />} />
           <Route path="manufacturers" element={<ManufacturersList manufacturer={props.manufacturer} />} />
           <Route path="manufacturers/create" element={<CreateManufacturer />} />
+          <Route path="/models" element={<ModelList />} />
           <Route path="/models/create" element={<ModelForm />} />
           <Route path="/automobiles" element={<AutomobileList />} />
           <Route path="/automobiles/create" element={<AutomobileForm />} />
@@ -72,7 +73,6 @@ function App(props) {
 
           <Route path="/sales/create" element={<SalesForm />} />
           <Route path="/sales" element={<SalesList />} />
-          <Route path="/models" element={<ModelList />} />
           <Route path="/sales/history" element={<SalesPersonHistory />} />
         </Routes>
       </div>

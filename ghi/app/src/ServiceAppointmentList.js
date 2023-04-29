@@ -5,19 +5,19 @@ import { useState, useEffect } from "react";
 const ServiceAppointmentList = () => {
 	const [appointments, setAppointments] = useState([]);
 
-    const fetchAppointments = async () => {
-        const url = "http://localhost:8080/api/appointments/";
-        const response = await fetch(url);
+	const fetchAppointments = async () => {
+		const url = "http://localhost:8080/api/appointments/";
+		const response = await fetch(url);
 
-        if (response.ok) {
-            const data = await response.json();
-            setAppointments(data.appointments);
-        }
-    }
+		if (response.ok) {
+			const data = await response.json();
+			setAppointments(data.appointments);
+		}
+	}
 
-    useEffect(() => {
-        fetchAppointments();
-    }, []);
+	useEffect(() => {
+		fetchAppointments();
+	}, []);
 
 
 	const deleteAppointment = async (id) => {
