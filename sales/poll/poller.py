@@ -18,7 +18,7 @@ def poll(repeat = True):
         print('Sales poller polling for data')
         try:
             # Write your polling logic, here
-            response = requests.get("http://project-beta-inventory-api-1:8000/api/automobiles")
+            response = requests.get("http://inventory-api:8000/api/automobiles")
             content = json.loads(response.content)
             for automobile in content["autos"]:
                 AutomobileVO.objects.update_or_create(
@@ -26,7 +26,7 @@ def poll(repeat = True):
                 )
         except Exception as e:
             print(e, file=sys.stderr)
-        
+
         if (not repeat):
             break
 
