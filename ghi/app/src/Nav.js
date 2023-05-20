@@ -10,18 +10,28 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="nav navbar-nav me-auto mb-2 mb-lg-0">
-
+            <li>
+              <a> Inventory &#x25BE;</a>
+              <ul className='dropdown'>
+                <li><a href="/manufacturers/create">Create a Manufacturer</a></li>
+                <li><a>to=</a>Manufacturers</li>
+                <li><a>to=</a>Create a Model</li>
+                <li><a>to=</a>Models</li>
+                <li><a>to=</a>Create an Automobile</li>
+                <li><a>to=</a>Automobiles</li>
+              </ul>
+            </li>
             {/* <li className="nav-item"> */}
-            <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
+            {/* <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
             {/* </li> */}
-            <NavLink className="nav-link" to="/manufacturers/create"> Create a Manufacturer</NavLink>
+            {/* <NavLink className="nav-link" to="/manufacturers/create"> Create a Manufacturer</NavLink> */}
             <NavLink className="nav-link" to="/technicians/create"> Add a Technician</NavLink>
             <NavLink className="nav-link" to="/technicians"> Technicians</NavLink>
             <NavLink className="nav-link" to="/appointments/create"> Create a Service Appointment</NavLink>
             <NavLink className="nav-link" to="/appointments"> Service Appointments</NavLink>
             <NavLink className="nav-link" to="/service_history"> Service History</NavLink>
-            <NavLink className="nav-link" to="/models"> Models</NavLink>
-            <NavLink className="nav-link" to='/models/create'>Create a Model</NavLink>
+            {/* <NavLink className="nav-link" to="/models"> Models</NavLink>
+            <NavLink className="nav-link" to='/models/create'>Create a Model</NavLink> */}
             <NavLink className="nav-link" to='/automobiles'>Automobiles</NavLink>
             <NavLink className="nav-link" to='/automobiles/create'>Create an Automobile</NavLink>
             <NavLink className="nav-link" to="/salespeople">Salespeople</NavLink>
@@ -32,7 +42,6 @@ function Nav() {
             <NavLink className="nav-link" to='/sales'>Sales</NavLink>
             {/* <li> */}
             <NavLink className="nav-link" to='/sales/history'>Salesperson History</NavLink>
-            {/* </li> */}
           </ul>
         </div>
       </div>

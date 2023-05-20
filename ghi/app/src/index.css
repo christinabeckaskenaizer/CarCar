@@ -16,3 +16,9 @@ code {
   height: 200px;
   width: 250px;
 }
+
+.button {
+  height: 35px;
+  margin-left: 5px;
+
+}

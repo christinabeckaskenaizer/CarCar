@@ -35,14 +35,21 @@ const ServiceAppointmentList = () => {
         <h1 className="display-5">Service Appointments</h1>
         <form onSubmit={handleSearch}>
           <label>
-            VIN:
-            <input
+            {/* <input
               type="text"
+              class="form-control"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-            />
+            /> */}
+            <div className="row mb-3">
+              <label htmlFor="inputEmail3" value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)} className="col-sm-2 col-form-label">VIN</label>
+              <div className="col-sm-10">
+                <input type="email" className="form-control" id="inputEmail3" />
+              </div>
+            </div>
           </label>
-          <button type="submit">Search</button>
+          <button onClick={handleSearch} type="button" className="button btn btn-success btn-sm text-center" >Search</button>
         </form>
       </div>
       <table className="table table-striped">

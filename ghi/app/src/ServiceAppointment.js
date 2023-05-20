@@ -161,7 +161,7 @@ function ServiceAppointment({ Techmodels }) {
                 <input value={reason || ''} onChange={handleReasonChange} placeholder='Reason' required type='text' name='reason' id='reason' className="form-control" />
               </div>
             </div>
-            <button className="btn btn-primary">Create Technician</button>
+            <button className="btn btn-primary">Create Appointment</button>
           </form>
         </div>
       </div>
